@@ -25,7 +25,7 @@ if defined SHOW_HELP (
     echo.
     echo Options:
     echo        -h, --h,--help            Help.
-    echo        -d C:\install\dir         Target installation directory.
+    echo        -d C:\myapp               Target installation directory.
 REM echo        --internal-skip-privilege-check
 REM echo                                  Skipping Administrator privileges check
 REM echo                                  is internal and not documented.
@@ -37,7 +37,7 @@ REM Optional. Remove the following lines if your application does not require Ad
 if not defined SKIP_PRIV_CHECK (
     REM An alternative is to use something like: whoami /priv | findstr SeCreateGlobalPrivilege | findstr Enabled
     net session > NUL 2>&1 || (
-        echo Administrator privileges are required to execute bootstrap. Run Command Prompt as Administrator and try again.
+        echo Administrator privileges are required to execute this application. Run Command Prompt as Administrator and try again.
         exit /b 1
     )
 )
