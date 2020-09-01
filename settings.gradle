@@ -1,0 +1,3 @@
+rootProject.name = "scriptpack"
+
+include "modules:scriptpack", "plugins:gradle-scriptpack"

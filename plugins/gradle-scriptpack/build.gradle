@@ -1,0 +1,17 @@
+plugins {
+    id "java-gradle-plugin"
+    id "eclipse"
+}
+
+gradlePlugin {
+    plugins {
+        scriptpackPlugin {
+            id = "com.softwareag.scriptpack"
+            implementationClass = "com.softwareag.scriptpack.plugin.ScriptPackPlugin"
+        }
+    }
+}
+
+dependencies {
+    implementation project(":modules:scriptpack")
+}
