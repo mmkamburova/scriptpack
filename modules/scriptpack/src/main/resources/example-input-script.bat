@@ -4,8 +4,7 @@ setlocal EnableExtensions EnableDelayedExpansion
 REM Initialization.
 set WORKDIR=%~dp0
 set WORKDIR=%WORKDIR:~0,-1%
-set DEFAULT_APP_HOME=%WORKDIR%
-set APP_HOME=%DEFAULT_APP_HOME%
+set APP_HOME=%WORKDIR%
 
 REM Handling command line arguments.
 REM IMPORTANT: You cannot use a goto-shift loop because it will not work.
@@ -24,7 +23,7 @@ if defined SHOW_HELP (
     echo Usage: %~n0 [Options...]
     echo.
     echo Options:
-    echo        -h, --h,--help            Help.
+    echo        -h, --h,--help            This usage help.
     echo        -d C:\myapp               Target installation directory.
 REM echo        --internal-skip-privilege-check
 REM echo                                  Skipping Administrator privileges check
@@ -47,7 +46,7 @@ if %APP_HOME:~-1%==\ set APP_HOME=%APP_HOME:~0,-1%
 
 md "%APP_HOME%" 2> NUL
 
-REM at this point a variable with name APP_HOME must be defined with value pointing to the location where to extract the payload, for example C:\myapp
+REM At this point a variable with name APP_HOME must be defined with value pointing to the location where to extract the payload, for example C:\myapp
 REM IMPORTANT: The following line is a placeholder and will be replaced with the actual code for extracting the payload.
 REM PAYLOAD-EXTRACT-CODE
 

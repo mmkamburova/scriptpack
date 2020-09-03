@@ -1,12 +1,14 @@
 plugins {
     id "java-gradle-plugin"
     id "eclipse"
+    id "com.gradle.plugin-publish" version "0.10.1"
 }
 
 gradlePlugin {
     plugins {
         scriptpackPlugin {
             id = "com.softwareag.scriptpack"
+            displayName = "Software AG Script Pack Plugin for Gradle"
             implementationClass = "com.softwareag.scriptpack.plugin.ScriptPackPlugin"
         }
     }
@@ -14,4 +16,13 @@ gradlePlugin {
 
 dependencies {
     implementation project(":modules:scriptpack")
+}
+
+version = "1.0.0"
+
+pluginBundle {
+    website = "https://github.com/SoftwareAG/scriptpack"
+    vcsUrl = "https://github.com/SoftwareAG/scriptpack.git"
+    tags = ["script", "windows", "posix"]
+    description = "Script Pack creates executable scripts for Windows and POSIX systems that contain arbitrary binary data (payload)."
 }
