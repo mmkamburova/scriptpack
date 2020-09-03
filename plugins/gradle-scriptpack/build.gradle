@@ -15,6 +15,7 @@ gradlePlugin {
 }
 
 sourceSets.main.java.srcDirs project(":modules:scriptpack").sourceSets.main.java
+sourceSets.main.resources.srcDirs project(":modules:scriptpack").sourceSets.main.resources
 
 version = "1.0.0"
 
