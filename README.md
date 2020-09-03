@@ -3,7 +3,7 @@
 Script Pack creates executable scripts for Windows and POSIX systems that contain arbitrary binary data (payload). The resulting scripts are completely self-contained. The script code of each script is mostly user-defined and the payload extracts itself.
 
 ### Creating POSIX scripts
-Script Pack creates POSIX scripts using the standard approach for creating self-contained scripts by appending binary data at the end of a shell script.
+Script Pack creates POSIX scripts using the standard approach for creating self-contained scripts by appending binary data at the end of a shell script. Script Pack supports creating scripts for the following operating systems: Linux, macOS, *BSD, Solaris, AIX, and HP-UX. The following limitation exists when creating scripts for Solaris, AIX, and HP-UX: the payload archive must be in the PAX format.
 
 ### Creating Windows scripts
 Since the standard approach for creating POSIX scripts cannot be applied directly to Windows batch scripts, an innovative approach is used to achieve a behavior that is similar to a POSIX self-contained script. A two-stage PowerShell-assisted mechanism extracts binary data from the end of a batch script. The script consists of three parts:
@@ -11,7 +11,7 @@ Since the standard approach for creating POSIX scripts cannot be applied directl
 - Payload extract code - code that is automatically inserted into the script. When the payload extract code is executed, it extracts the payload from the script.
 - Execution - user-defined code that uses the extracted payload. The code in the execution part of the script defines what the script should do with the extracted payload.
 
-An input script example is available [here](modules/scriptpack/src/main/resources/example-input-script.bat).
+Input script examples are available for [Windows](modules/scriptpack/src/main/resources/example-input-script.bat) and [POSIX](modules/scriptpack/src/main/resources/example-input-script.sh).
 A fully functional example is available at <https://github.com/SoftwareAG/scriptpack-consumer>
 
 #### Limitations

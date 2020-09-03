@@ -7,9 +7,9 @@ extractPayload()
 
     if [ "$legacy" -eq 1 ]
     then
-        astext="" # does not support --text option, but works ok without it
+        astext=""
     else
-        astext="--text" # linux/osx requires this option to work properly
+        astext="--text"
     fi 
     match=`head -n 1000 $0 | grep $astext -n '^PAYLOAD:$' | cut -d ':' -f 1`
 
