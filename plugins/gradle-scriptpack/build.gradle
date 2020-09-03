@@ -14,9 +14,7 @@ gradlePlugin {
     }
 }
 
-dependencies {
-    implementation project(":modules:scriptpack")
-}
+sourceSets.main.java.srcDirs project(":modules:scriptpack").sourceSets.main.java
 
 version = "1.0.0"
 
