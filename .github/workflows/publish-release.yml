@@ -1,11 +1,9 @@
-name: Publish release
+name: Publish packages
 
-on:
-  release:
-    types: [published]
+on: [push]
 
 jobs:
-  publish-release:
+  publish-packages:
     runs-on: ubuntu-latest
 
     steps:
