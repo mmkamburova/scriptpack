@@ -2,15 +2,14 @@ plugins {
     id "maven-publish"
 }
 
-apply plugin: 'java'
-
-subprojects {
+configure(javaProjects()) {
     apply plugin: "maven-publish"
+	apply plugin: "java"
     publishing {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/OWNER/REPOSITORY")
+                url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                 credentials {
                     username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                     password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
