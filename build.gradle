@@ -23,3 +23,7 @@ configure(javaProjects()) {
         }
     }
 }
+
+def javaProjects() {
+    subprojects.findAll { new File(it.projectDir, 'src').directory }
+}
