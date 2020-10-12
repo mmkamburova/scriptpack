@@ -1,7 +1,8 @@
 plugins {
     id "maven-publish"
-    id "java"
 }
+
+apply plugin: 'java'
 
 subprojects {
     apply plugin: "maven-publish"
