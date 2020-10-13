@@ -37,7 +37,7 @@ project.afterEvaluate {
                 /*gpr(MavenPublication) {
                     from(components.java)
                 }*/
-                pluginMaven(IvyPublication) {
+                pluginIvy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
                     //module = 'project1-sample'
                     //revision = '1.1'
