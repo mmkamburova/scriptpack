@@ -16,14 +16,14 @@ project.afterEvaluate {
         publishing {
             repositories {
                 //jcenter()
-                maven {
+                /*maven {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                     credentials {
                         username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                         password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
                     }
-                }
+                }*/
                 ivy {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
@@ -34,9 +34,9 @@ project.afterEvaluate {
                 }
             }
             publications {
-                gpr(MavenPublication) {
+                /*gpr(MavenPublication) {
                     from(components.java)
-                }
+                }*/
                 ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
                     //module = 'project1-sample'
