@@ -3,48 +3,50 @@ plugins {
     id "ivy-publish"
 }
 
-configure(javaProjects()) {
-    apply plugin: "maven-publish"
-    apply plugin: "java"
-    //apply plugin: 'com.jfrog.artifactory'
-    
-    //artifactoryPublish.skip = true
-    //artifactoryPublish.dependsOn('build')
-    
-    publishing {
-        repositories {
-	    jcenter()
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
-                credentials {
-                    username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-                    password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+project.afterEvaluate {
+    configure(javaProjects()) {
+        apply plugin: "maven-publish"
+        apply plugin: "java"
+        //apply plugin: 'com.jfrog.artifactory'
+
+        //artifactoryPublish.skip = true
+        //artifactoryPublish.dependsOn('build')
+
+        publishing {
+            repositories {
+            jcenter()
+                maven {
+                    name = "GitHubPackages"
+                    url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
+                    credentials {
+                        username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+                        password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+                    }
+                }
+            ivy {
+                    url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                 }
             }
-	    ivy {
-                url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
-            }
-        }
-        publications {
-            gpr(MavenPublication) {
-                from(components.java)
-            }
-	    gpr(IvyPublication) {
-            	organisation = 'com.softwareag.ext'
-            	module = 'project1-sample'
-            	revision = '1.1'
-            	descriptor.status = 'integration'
-            	descriptor.branch = 'develop'
-            	descriptor.extraInfo 'http://my.namespace', 'myElement', 'Some value'
+            publications {
+                gpr(MavenPublication) {
+                    from(components.java)
+                }
+            gpr(IvyPublication) {
+                    organisation = 'com.softwareag.ext'
+                    module = 'project1-sample'
+                    revision = '1.1'
+                    descriptor.status = 'integration'
+                    descriptor.branch = 'develop'
+                    descriptor.extraInfo 'http://my.namespace', 'myElement', 'Some value'
 
-            	from components.java
+                    from components.java
+                }
             }
         }
+        /*artifactoryPublish {
+            publications(publishing.publications.gpr)
+        }*/
     }
-    /*artifactoryPublish {
-        publications(publishing.publications.gpr)
-    }*/
 }
 
 def javaProjects() {
