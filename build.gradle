@@ -6,6 +6,7 @@ plugins {
 project.afterEvaluate {
     configure(javaProjects()) {
         apply plugin: "maven-publish"
+        apply plugin: "ivy-publish"
         apply plugin: "java"
         //apply plugin: 'com.jfrog.artifactory'
 
