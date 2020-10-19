@@ -1,6 +1,11 @@
 plugins {
     id "maven-publish"
     id "ivy-publish"
+    id "java"
+}
+
+task sourceJar(type: Jar) {
+  from sourceSets.main.allJava
 }
 
 project.afterEvaluate {
@@ -37,7 +42,7 @@ project.afterEvaluate {
                 /*gpr(MavenPublication) {
                     from(components.java)
                 }*/
-                pluginIvy(IvyPublication) {
+                ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
                     //module = 'project1-sample'
                     //revision = '1.1'
@@ -46,6 +51,22 @@ project.afterEvaluate {
                     //descriptor.extraInfo 'http://my.namespace', 'myElement', 'Some value'
 
                     from components.java
+                    artifact(sourceJar) {
+                        type "source"
+                        extension "src.jar"
+                        conf "runtime"
+                    }
+                    descriptor {
+                        license {
+                          name = "Custom License"
+                        }
+                        author {
+                          name = "Custom Name"
+                        }
+                        description {
+                          text = "Custom Description"
+                        }
+                    }
                 }
             }
         }
