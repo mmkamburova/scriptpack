@@ -28,5 +28,5 @@ jobs:
       - name: Archive ivy.xml
         uses: actions/upload-artifact@v2
         with:
-          name: iv-xml-archive
+          name: ivy-xml-archive
           path: modules/scriptpack/build/publications/ivy
