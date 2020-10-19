@@ -1,5 +1,5 @@
 plugins {
-    id "maven-publish"
+    //id "maven-publish"
     id "ivy-publish"
     id "java"
 }
@@ -10,7 +10,7 @@ task sourceJar(type: Jar) {
 
 project.afterEvaluate {
     configure(javaProjects()) {
-        apply plugin: "maven-publish"
+        //apply plugin: "maven-publish"
         apply plugin: "ivy-publish"
         apply plugin: "java"
         //apply plugin: 'com.jfrog.artifactory'
