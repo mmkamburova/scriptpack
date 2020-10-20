@@ -15,7 +15,7 @@ task sourceJar(type: Jar) {
 }
 
 group = 'com.softwareag.scriptpack.gradle'
-version = '1.0.21'
+version = '1.0.22'
 
 project.afterEvaluate {
     configure(javaProjects()) {
