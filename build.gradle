@@ -4,25 +4,12 @@ plugins {
     id "java-library"
 }
 
-task packageJavadoc(type: Jar, dependsOn: 'javadoc') {
-    from javadoc.destinationDir
-    classifier = 'javadoc'
-}
-task packageSources(type: Jar, dependsOn: 'classes') {
-    from sourceSets.main.allSource
-    classifier = 'sources'
-}
-artifacts {
-    archives packageJavadoc
-    archives packageSources
-}
-
 task sourceJar(type: Jar) {
   from sourceSets.main.allJava
 }
 
 group = 'com.softwareag.scriptpack.gradle'
-version = '1.0.23'
+version = '1.0.24'
 
 project.afterEvaluate {
     configure(javaProjects()) {
