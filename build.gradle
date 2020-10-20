@@ -60,6 +60,7 @@ project.afterEvaluate {
                         type "source"
                         extension "jar"
                         conf "runtime"
+                        builtBy generateDescriptorFileForIvyPublication
                     }
                     //artifact source: 'my-docs-file.htm', classifier: 'docs', extension: 'html', builtBy: genDocs
                     descriptor {
