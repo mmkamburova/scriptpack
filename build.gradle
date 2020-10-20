@@ -2,12 +2,19 @@ plugins {
     id "maven-publish"
     //id "ivy-publish"
     id "java-library"
-    id "signing"
 }
 
-java {
-    withJavadocJar()
-    withSourcesJar()
+task packageJavadoc(type: Jar, dependsOn: 'javadoc') {
+    from javadoc.destinationDir
+    classifier = 'javadoc'
+}
+task packageSources(type: Jar, dependsOn: 'classes') {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+artifacts {
+    archives packageJavadoc
+    archives packageSources
 }
 
 task sourceJar(type: Jar) {
@@ -15,7 +22,7 @@ task sourceJar(type: Jar) {
 }
 
 group = 'com.softwareag.scriptpack.gradle'
-version = '1.0.22'
+version = '1.0.23'
 
 project.afterEvaluate {
     configure(javaProjects()) {
