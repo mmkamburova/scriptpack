@@ -2,6 +2,12 @@ plugins {
     id "maven-publish"
     //id "ivy-publish"
     id "java-library"
+    id "signing"
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 task sourceJar(type: Jar) {
@@ -9,7 +15,7 @@ task sourceJar(type: Jar) {
 }
 
 group = 'com.softwareag.scriptpack.gradle'
-version = '1.0.20'
+version = '1.0.21'
 
 project.afterEvaluate {
     configure(javaProjects()) {
@@ -50,10 +56,10 @@ project.afterEvaluate {
             publications {
                 gpr(MavenPublication) {
                     from(components.java)
-                    artifact(sourceJar) {
+                    /*artifact(sourceJar) {
                         classifier "source"
                         extension "src.jar"
-                    }
+                    }*/
                 }
                 /*ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
