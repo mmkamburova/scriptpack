@@ -8,9 +8,6 @@ task sourceJar(type: Jar) {
   from sourceSets.main.allJava
 }
 
-group = 'com.softwareag.scriptpack.gradle'
-version = '1.0.24'
-
 project.afterEvaluate {
     configure(javaProjects()) {
         apply plugin: "maven-publish"
@@ -50,10 +47,10 @@ project.afterEvaluate {
             publications {
                 gpr(MavenPublication) {
                     from(components.java)
-                    /*artifact(sourceJar) {
+                    artifact(sourceJar) {
                         classifier "source"
                         extension "src.jar"
-                    }*/
+                    }
                 }
                 /*ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
