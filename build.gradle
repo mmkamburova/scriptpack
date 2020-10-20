@@ -5,6 +5,7 @@ plugins {
 }
 
 task sourceJar(type: Jar) {
+  classifier 'sources'
   from sourceSets.main.allJava
 }
 
@@ -50,7 +51,7 @@ project.afterEvaluate {
             publications {
                 gpr(MavenPublication) {
                     from(components.java)
-                    artifact tasks.sourceJar
+                    artifact sourceJar
                 }
                 /*ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
