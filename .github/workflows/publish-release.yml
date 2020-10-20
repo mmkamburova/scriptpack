@@ -23,7 +23,7 @@ jobs:
           NEW_VERSION=$(echo "${GITHUB_REF}" | cut -d "/" -f3)
           echo "New version: ${NEW_VERSION}"
           echo "Github username: ${GITHUB_ACTOR}"
-          gradle publish
+          gradle publish -is
           
       - name: Archive ivy.xml
         uses: actions/upload-artifact@v2
