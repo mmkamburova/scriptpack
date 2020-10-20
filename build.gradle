@@ -1,18 +1,26 @@
 plugins {
     id "maven-publish"
     //id "ivy-publish"
-    id "java"
+    id "java-library"
 }
 
 task sourceJar(type: Jar) {
   from sourceSets.main.allJava
 }
 
+group = 'com.softwareag.scriptpack.gradle'
+version = '1.0.18'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 project.afterEvaluate {
     configure(javaProjects()) {
         apply plugin: "maven-publish"
         //apply plugin: "ivy-publish"
-        apply plugin: "java"
+        apply plugin: "java-library"
         //apply plugin: 'com.jfrog.artifactory'
 
         //artifactoryPublish.skip = true
@@ -47,11 +55,6 @@ project.afterEvaluate {
             publications {
                 gpr(MavenPublication) {
                     from(components.java)
-                    artifact(sourceJar) {
-                        type "source"
-                        extension "src.jar"
-                        conf "runtime"
-                    }
                 }
                 /*ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
