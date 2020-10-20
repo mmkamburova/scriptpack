@@ -32,6 +32,11 @@ project.afterEvaluate {
                 ivy {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
+                    patternLayout {
+                        artifact "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
+                        ivy "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy.ivy"
+                        m2compatible = true
+                     }
                     credentials {
                         username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                         password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
@@ -56,7 +61,6 @@ project.afterEvaluate {
                         extension "src.jar"
                         conf "runtime"
                     }
-                    //artifact source: 'my-docs-file.htm', classifier: 'docs', extension: 'html', builtBy: genDocs
                     descriptor {
                         license {
                           name = "Custom License"
