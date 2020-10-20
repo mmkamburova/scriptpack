@@ -49,7 +49,6 @@ project.afterEvaluate {
                     from(components.java)
                     artifact(sourceJar) {
                         classifier "source"
-                        extension "src.jar"
                     }
                 }
                 /*ivy(IvyPublication) {
