@@ -33,8 +33,7 @@ project.afterEvaluate {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                     patternLayout {
-                        artifact "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
-                        ivy "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy.ivy"
+                        ivy "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
                         m2compatible = true
                      }
                     credentials {
