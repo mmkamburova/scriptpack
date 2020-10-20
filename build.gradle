@@ -32,7 +32,7 @@ project.afterEvaluate {
                 ivy {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
-                    ivyPattern = "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
+                    ivyPattern "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
                     /*patternLayout {
                         artifact "com.softwareag.scriptpack.gradle/${project.name}/${version}/[artifact]-[revision].[ext]"
                         ivy "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
