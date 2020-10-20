@@ -1,6 +1,6 @@
 plugins {
-    //id "maven-publish"
-    id "ivy-publish"
+    id "maven-publish"
+    //id "ivy-publish"
     id "java"
 }
 
@@ -10,8 +10,8 @@ task sourceJar(type: Jar) {
 
 project.afterEvaluate {
     configure(javaProjects()) {
-        //apply plugin: "maven-publish"
-        apply plugin: "ivy-publish"
+        apply plugin: "maven-publish"
+        //apply plugin: "ivy-publish"
         apply plugin: "java"
         //apply plugin: 'com.jfrog.artifactory'
 
@@ -21,15 +21,15 @@ project.afterEvaluate {
         publishing {
             repositories {
                 //jcenter()
-                /*maven {
+                maven {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                     credentials {
                         username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                         password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
                     }
-                }*/
-                ivy {
+                }
+                /*ivy {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                     //ivyPattern "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
@@ -42,13 +42,18 @@ project.afterEvaluate {
                         username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                         password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
                     }
-                }
+                }*/
             }
             publications {
-                /*gpr(MavenPublication) {
+                gpr(MavenPublication) {
                     from(components.java)
-                }*/
-                ivy(IvyPublication) {
+                    artifact(sourceJar) {
+                        type "source"
+                        extension "src.jar"
+                        conf "runtime"
+                    }
+                }
+                /*ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
                     //module = 'project1-sample'
                     //revision = '1.1'
@@ -73,7 +78,7 @@ project.afterEvaluate {
                           text = "Custom Description"
                         }
                     }
-                }
+                }*/
             }
         }
         /*artifactoryPublish {
