@@ -56,6 +56,12 @@ project.afterEvaluate {
                         extension "src.jar"
                         conf "runtime"
                     }
+                    artifact('modules/scriptpack/build/publications/ivy/ivy.xml') {
+                        type "source"
+                        extension "jar"
+                        conf "runtime"
+                    }
+                    //artifact source: 'my-docs-file.htm', classifier: 'docs', extension: 'html', builtBy: genDocs
                     descriptor {
                         license {
                           name = "Custom License"
