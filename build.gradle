@@ -18,7 +18,8 @@ project.afterEvaluate {
         //artifactoryPublish.skip = true
         //artifactoryPublish.dependsOn('build')
         
-        group="com.softwareag.scriptpack.gradle"
+        group="com.softwareag.scriptpack"
+        name="scriptpack-maven"
         version="1.0.31-SNAPSHOT"
         
         publishing {
