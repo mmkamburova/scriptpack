@@ -17,6 +17,9 @@ project.afterEvaluate {
 
         //artifactoryPublish.skip = true
         //artifactoryPublish.dependsOn('build')
+        
+        group="com.softwareag.scriptpack.gradle"
+        version="1.0.30"
 
         publishing {
             repositories {
