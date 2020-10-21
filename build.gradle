@@ -19,7 +19,7 @@ project.afterEvaluate {
         //artifactoryPublish.dependsOn('build')
         
         group="com.softwareag.scriptpack.gradle"
-        version="1.0.31"
+        version="1.0.31-SNAPSHOT"
         
         publishing {
             repositories {
