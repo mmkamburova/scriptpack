@@ -1,6 +1,6 @@
 plugins {
-    id "maven-publish"
-    //id "ivy-publish"
+    //id "maven-publish"
+    id "ivy-publish"
     id "java-library"
 }
 
@@ -10,29 +10,30 @@ task sourceJar(type: Jar) {
 
 project.afterEvaluate {
     configure(javaProjects()) {
-        apply plugin: "maven-publish"
-        //apply plugin: "ivy-publish"
+        //apply plugin: "maven-publish"
+        apply plugin: "ivy-publish"
         apply plugin: "java-library"
         //apply plugin: 'com.jfrog.artifactory'
 
         //artifactoryPublish.skip = true
         //artifactoryPublish.dependsOn('build')
         
-        group="com.softwareag.scriptpack.gradle"
-        version="1.0.31-SNAPSHOT"
+        group="com.softwareag.scriptpack"
+		name="scriptpack-ivy"
+        version="1.0.0"
         
         publishing {
             repositories {
                 //jcenter()
-                maven {
+                /*maven {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                     credentials {
                         username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                         password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
                     }
-                }
-                /*ivy {
+                }*/
+                ivy {
                     name = "GitHubPackages"
                     url = uri("https://maven.pkg.github.com/mmkamburova/scriptpack")
                     //ivyPattern "com.softwareag.scriptpack.gradle/${project.name}/${version}/ivy-${version}.ivy"
@@ -45,16 +46,16 @@ project.afterEvaluate {
                         username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                         password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
                     }
-                }*/
+                }
             }
             publications {
-                gpr(MavenPublication) {
+                /*gpr(MavenPublication) {
                     from(components.java)
                     artifact(sourceJar) {
                         classifier "source"
                     }
-                }
-                /*ivy(IvyPublication) {
+                }*/
+                ivy(IvyPublication) {
                     //organisation = 'com.softwareag.ext'
                     //module = 'project1-sample'
                     //revision = '1.1'
@@ -79,7 +80,7 @@ project.afterEvaluate {
                           text = "Custom Description"
                         }
                     }
-                }*/
+                }
             }
         }
         /*artifactoryPublish {
